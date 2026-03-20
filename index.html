@@ -44,14 +44,14 @@ body {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 24px;
+  padding:8px 16px;
   border-bottom:1px solid rgba(255,255,255,.08);
   flex-wrap:wrap;
-  gap:10px;
+  gap:8px;
 }
 .proto-logo {
   font-family:var(--font-h);
-  font-size:15px;
+  font-size:13px;
   font-weight:800;
   color:var(--g200);
   letter-spacing:.02em;
@@ -76,7 +76,7 @@ body {
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:16px 24px;
+  padding:8px 16px;
   gap:0;
   overflow-x:auto;
   border-bottom:1px solid rgba(255,255,255,.06);
@@ -129,22 +129,22 @@ body {
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:24px 16px 12px;
-  gap:40px;
+  padding:10px 16px 8px;
+  gap:24px;
 }
 
 /* Phone frame */
 .phone-outer {
   background:#0d0d0d;
-  border-radius:44px;
-  padding:12px;
+  border-radius:34px;
+  padding:8px;
   box-shadow:
     0 0 0 1px rgba(255,255,255,.08),
     0 30px 80px rgba(0,0,0,.6),
     0 8px 20px rgba(0,0,0,.4);
   position:relative;
   flex-shrink:0;
-  width:280px;
+  width:220px;
 }
 .phone-btn-vol {
   position:absolute;
@@ -168,10 +168,10 @@ body {
   background:#222;border-radius:0 2px 2px 0;
 }
 .phone-notch-bar {
-  width:70px;height:22px;
+  width:56px;height:16px;
   background:#0d0d0d;
-  border-radius:0 0 16px 16px;
-  margin:0 auto 6px;
+  border-radius:0 0 12px 12px;
+  margin:0 auto 4px;
   display:flex;align-items:center;justify-content:center;
   gap:6px;
 }
@@ -183,18 +183,18 @@ body {
   width:24px;height:4px;border-radius:2px;background:#1a1a1a;
 }
 .phone-screen {
-  border-radius:32px;
+  border-radius:24px;
   overflow:hidden;
   background:var(--cream);
-  height:560px;
+  height:440px;
   display:flex;
   flex-direction:column;
   position:relative;
 }
 .phone-home {
-  width:36px;height:4px;border-radius:2px;
-  background:rgba(255,255,255,.25);
-  margin:8px auto 4px;
+  width:30px;height:3px;border-radius:2px;
+  background:rgba(255,255,255,.22);
+  margin:5px auto 3px;
 }
 
 /* Screen transitions */
@@ -458,7 +458,7 @@ body {
 
 /* ── SIDEBAR (instructions) ─────────────────────────────── */
 .sidebar {
-  width:260px;
+  width:200px;
   flex-shrink:0;
   display:flex;
   flex-direction:column;
@@ -510,7 +510,7 @@ body {
 
 /* ── BOTTOM BAR ─────────────────────────────────────────── */
 .proto-bottombar {
-  padding:12px 24px;
+  padding:8px 16px;
   border-top:1px solid rgba(255,255,255,.06);
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   flex-wrap:wrap;
@@ -610,8 +610,8 @@ body {
         <div class="ob-body">
           <div class="ob-logobox"><span>M</span></div>
           <div class="ob-appname">Mama-Bot</div>
-          <div class="ob-tagline">Your maternal health assistant.<br/>Free. Safe. Always here.</div>
-          <div class="ob-lbl">Choose your language</div>
+          <div class="ob-tagline" id="ob-tagline">Your maternal health assistant.<br/>Free. Safe. Always here.</div>
+          <div class="ob-lbl" id="ob-lang-prompt">Choose your language</div>
           <div class="lang-list">
             <div class="lang-item sel" onclick="selectLang(this)">
               <div class="lang-flag" style="background:#0F6E56">EN</div>
@@ -634,7 +634,7 @@ body {
               <div class="chk"></div>
             </div>
           </div>
-          <div class="cta" onclick="goTo(1)">Continue in English →</div>
+          <div class="cta" id="ob-cta" onclick="goTo(1)">Continue in English →</div>
         </div>
       </div>
 
@@ -643,30 +643,30 @@ body {
         <div class="sbar"><span class="sbar-time">10:24</span><div class="sbar-icons"><div class="sig" style="height:4px"></div><div class="sig" style="height:6px"></div><div class="sig" style="height:8px"></div><div class="sig" style="height:10px;opacity:.3"></div><div class="batt"></div></div></div>
         <div class="abar">
           <div class="abar-av">M</div>
-          <div style="flex:1"><div class="abar-title">Mama-Bot</div><div class="abar-sub">Online · Week 24</div></div>
-          <div class="abar-pill">T2</div>
+          <div style="flex:1"><div class="abar-title">Mama-Bot</div><div class="abar-sub" id="chat-online">Online · Week 24</div></div>
+          <div class="abar-pill" id="chat-week-pill">T2</div>
         </div>
         <div class="chat-area" id="chatArea">
           <div class="mrow">
             <div class="mav">M</div>
-            <div><div class="bbl bot">Hello Amara! I am Mama-Bot, your maternal health assistant. How can I help you today?</div><div class="bbl-t">10:20</div></div>
+            <div><div class="bbl bot" id="chat-greeting">Hello Amara! I am Mama-Bot, your maternal health assistant. How can I help you today?</div><div class="bbl-t">10:20</div></div>
           </div>
           <div class="mrow u">
-            <div><div class="bbl usr">I have a headache since yesterday</div><div class="bbl-t">10:21</div></div>
+            <div><div class="bbl usr" id="chat-user-msg1">I have a headache since yesterday</div><div class="bbl-t">10:21</div></div>
           </div>
           <div class="mrow">
             <div class="mav">M</div>
-            <div><div class="bbl bot">A mild headache in pregnancy is common — often from dehydration or tiredness. Drink water and rest. However, if your headache is very severe, or if you have blurred vision or swelling in your face, please go to the clinic immediately.</div><div class="bbl-t">10:21</div></div>
+            <div><div class="bbl bot" id="chat-bot-reply1">A mild headache in pregnancy is common — often from dehydration or tiredness. Drink water and rest. However, if your headache is very severe, or if you have blurred vision or swelling in your face, please go to the clinic immediately.</div><div class="bbl-t">10:21</div></div>
           </div>
         </div>
         <div class="chat-qrow">
-          <button onclick="sendMsg('Is tiredness normal at 6 months?')">Tiredness?</button>
-          <button onclick="triggerDanger()">I am bleeding heavily</button>
-          <button onclick="sendMsg('What should I eat this week?')">Nutrition tip?</button>
+          <button id="chat-q1" onclick="sendMsg(T[activeLang].tirednessQ)">Tiredness?</button>
+          <button id="chat-q2" onclick="triggerDanger()">I am bleeding heavily</button>
+          <button id="chat-q3" onclick="sendMsg(T[activeLang].nutritionQ)">Nutrition tip?</button>
         </div>
         <div class="cinput-row">
-          <div class="cinput">Ask anything…</div>
-          <div class="csend" onclick="sendMsg('What should I eat this week?')"><div class="sarrow"></div></div>
+          <div class="cinput" id="chat-input-placeholder">Ask anything…</div>
+          <div class="csend" onclick="sendMsg(T[activeLang].nutritionQ)"><div class="sarrow"></div></div>
         </div>
       </div>
 
@@ -675,31 +675,31 @@ body {
         <div class="sbar red"><span class="sbar-time">14:07</span><div class="sbar-icons"><div class="sig" style="height:4px"></div><div class="sig" style="height:6px"></div><div class="sig" style="height:8px;opacity:.3"></div><div class="batt" style="border-color:rgba(255,255,255,.7)"></div></div></div>
         <div class="abar red">
           <div class="abar-av pulse" style="background:#F09595;color:#791F1F">!</div>
-          <div style="flex:1"><div class="abar-title">DANGER ALERT</div><div class="abar-sub">Emergency detected</div></div>
+          <div style="flex:1"><div class="abar-title" id="danger-title">DANGER ALERT</div><div class="abar-sub" id="danger-sub">Emergency detected</div></div>
         </div>
         <div class="danger-strip">
           <div class="dpulse"></div>
-          <div class="dlabel">Seek medical help immediately</div>
+          <div class="dlabel" id="danger-strip-txt">Seek medical help immediately</div>
         </div>
         <div class="danger-body">
           <div class="mrow u" style="display:flex;flex-direction:row-reverse">
-            <div><div class="bbl usr" style="background:#E24B4A">I am bleeding heavily and feel very dizzy</div><div class="bbl-t" style="color:var(--hint)">14:07</div></div>
+            <div><div class="bbl usr" style="background:#E24B4A" id="danger-user-msg">I am bleeding heavily and feel very dizzy</div><div class="bbl-t" style="color:var(--hint)">14:07</div></div>
           </div>
           <div class="d-card">
             <div class="d-head">
               <div class="d-ring"><span>!</span></div>
-              <div class="d-title">This is a medical emergency</div>
+              <div class="d-title" id="danger-card-title">This is a medical emergency</div>
             </div>
-            <div class="d-body">Heavy bleeding during pregnancy is a serious danger sign. Do not wait or try home remedies. You need a doctor right now.</div>
-            <div class="clinic-btn-ui" onclick="alert('In the live product, this dials the nearest clinic.')">📞 Call nearest clinic now</div>
+            <div class="d-body" id="danger-card-body">Heavy bleeding during pregnancy is a serious danger sign. Do not wait or try home remedies. You need a doctor right now.</div>
+            <div class="clinic-btn-ui" id="clinic-btn-txt" onclick="alert('In the live product, this dials the nearest clinic.')">📞 Call nearest clinic now</div>
           </div>
           <div class="d-advice">
-            <strong>While you wait for help:</strong>
-            Lie down and stay calm. Ask someone to take you to the clinic immediately. Do not eat or drink anything. Keep warm.
+            <strong id="advice-title">While you wait for help:</strong>
+            <span id="advice-body">Lie down and stay calm. Ask someone to take you to the clinic immediately. Do not eat or drink anything. Keep warm.</span>
           </div>
         </div>
         <div class="cinput-row" style="border-top-color:rgba(226,75,74,.25)">
-          <div class="cinput">Type message…</div>
+          <div class="cinput" id="danger-input-ph">Type message…</div>
           <div class="csend" style="background:var(--r500);box-shadow:0 2px 8px rgba(226,75,74,.3)"><div class="sarrow"></div></div>
         </div>
       </div>
@@ -707,83 +707,81 @@ body {
       <!-- SCREEN 4: REMINDERS -->
       <div class="screen-slide hidden-right" id="s3">
         <div class="sbar"><span class="sbar-time">8:15</span><div class="sbar-icons"><div class="sig" style="height:4px"></div><div class="sig" style="height:6px"></div><div class="sig" style="height:8px"></div><div class="sig" style="height:10px"></div><div class="batt"></div></div></div>
-        <div class="abar"><div class="abar-av">R</div><div style="flex:1"><div class="abar-title">Reminders</div><div class="abar-sub">3 upcoming · 2 daily meds</div></div></div>
+        <div class="abar"><div class="abar-av">R</div><div style="flex:1"><div class="abar-title" id="rem-title">Reminders</div><div class="abar-sub" id="rem-sub">3 upcoming · 2 daily meds</div></div></div>
         <div class="rem-body">
-          <div class="chip green">Upcoming appointments</div>
+          <div class="chip green" id="chip-upcoming">Upcoming appointments</div>
           <div class="rcard">
             <div class="rbadge"><div class="rd">12</div><div class="rm">MAR</div></div>
-            <div class="rinfo"><div class="rname">Antenatal visit</div><div class="rloc">Tamale District Hospital</div></div>
-            <div class="rtag green">9:00 AM</div>
+            <div class="rinfo"><div class="rname" id="v1n">Antenatal visit</div><div class="rloc" id="v1l">Tamale District Hospital</div></div>
+            <div class="rtag green" id="v1t">9:00 AM</div>
           </div>
           <div class="rcard">
             <div class="rbadge mid"><div class="rd">26</div><div class="rm">MAR</div></div>
-            <div class="rinfo"><div class="rname">BP check</div><div class="rloc">Community health post</div></div>
-            <div class="rtag green">10:30 AM</div>
+            <div class="rinfo"><div class="rname" id="v2n">BP check</div><div class="rloc" id="v2l">Community health post</div></div>
+            <div class="rtag green" id="v2t">10:30 AM</div>
           </div>
           <div class="rcard">
             <div class="rbadge lite"><div class="rd">08</div><div class="rm">APR</div></div>
-            <div class="rinfo"><div class="rname">Growth scan</div><div class="rloc">Regional hospital</div></div>
-            <div class="rtag green">Confirm</div>
+            <div class="rinfo"><div class="rname" id="v3n">Growth scan</div><div class="rloc" id="v3l">Regional hospital</div></div>
+            <div class="rtag green" id="v3t">Confirm</div>
           </div>
-
-          <div class="chip amber">Daily medication</div>
+          <div class="chip amber" id="chip-meds">Daily medication</div>
           <div class="rcard drug">
             <div class="rbadge amber"><div class="rx">Rx</div></div>
-            <div class="rinfo"><div class="rname">Folic acid tablet</div><div class="rloc">1 tablet · Every morning with food</div></div>
-            <div class="rtag amber">8:00 AM</div>
+            <div class="rinfo"><div class="rname" id="d1n">Folic acid tablet</div><div class="rloc" id="d1l">1 tablet · Every morning with food</div></div>
+            <div class="rtag amber" id="d1t">8:00 AM</div>
           </div>
           <div class="rcard drug">
             <div class="rbadge" style="background:#854F0B"><div class="rx">Rx</div></div>
-            <div class="rinfo"><div class="rname">Iron supplement</div><div class="rloc">1 tablet · Every evening after dinner</div></div>
-            <div class="rtag amber">7:00 PM</div>
+            <div class="rinfo"><div class="rname" id="d2n">Iron supplement</div><div class="rloc" id="d2l">1 tablet · Every evening after dinner</div></div>
+            <div class="rtag amber" id="d2t">7:00 PM</div>
           </div>
-
-          <div class="chip gray">Past</div>
+          <div class="chip gray" id="chip-past">Past</div>
           <div class="rcard past">
             <div class="rbadge gray"><div class="rd">28</div><div class="rm">FEB</div></div>
-            <div class="rinfo"><div class="rname">Booking appointment</div><div class="rloc">District clinic</div></div>
+            <div class="rinfo"><div class="rname" id="pastn">Booking appointment</div><div class="rloc" id="pastl">District clinic</div></div>
             <div class="rtag gray">Done</div>
           </div>
         </div>
         <div class="bnav">
-          <div class="bnav-item" onclick="goTo(1)"><div class="bni"></div><div class="bnl">Chat</div></div>
-          <div class="bnav-item on"><div class="bni"></div><div class="bnl">Reminders</div></div>
-          <div class="bnav-item" onclick="goTo(4)"><div class="bni"></div><div class="bnl">Tips</div></div>
+          <div class="bnav-item" onclick="goTo(1)"><div class="bni"></div><div class="bnl" id="bnav-chat">Chat</div></div>
+          <div class="bnav-item on"><div class="bni"></div><div class="bnl" id="bnav-rem">Reminders</div></div>
+          <div class="bnav-item" onclick="goTo(4)"><div class="bni"></div><div class="bnl" id="bnav-tips3">Tips</div></div>
         </div>
       </div>
 
       <!-- SCREEN 5: TIPS -->
       <div class="screen-slide hidden-right" id="s4">
         <div class="sbar"><span class="sbar-time">11:02</span><div class="sbar-icons"><div class="sig" style="height:4px"></div><div class="sig" style="height:6px"></div><div class="sig" style="height:8px;opacity:.4"></div><div class="batt"></div></div></div>
-        <div class="abar"><div class="abar-av">T</div><div style="flex:1"><div class="abar-title">Health Tips</div><div class="abar-sub">Week 24 · 2nd trimester</div></div></div>
+        <div class="abar"><div class="abar-av">T</div><div style="flex:1"><div class="abar-title" id="tips-title">Health Tips</div><div class="abar-sub" id="tips-sub">Week 24 · 2nd trimester</div></div></div>
         <div class="tips-body">
           <div class="wbar">
             <div class="wcircle"><div class="wnum">24</div></div>
-            <div><div class="wtitle">Week 24 — 2nd trimester</div><div class="wsub">Baby is the size of an ear of corn</div></div>
+            <div><div class="wtitle" id="week-label">Week 24 — 2nd trimester</div><div class="wsub" id="week-sub">Baby is the size of an ear of corn</div></div>
           </div>
-          <div class="chip green">Nutrition</div>
+          <div class="chip green" id="chip-nutrition">Nutrition</div>
           <div class="tcard">
             <div class="tstripe"></div>
-            <div class="tcont"><div class="ttitle">Iron-rich foods</div><div class="tbody">Eat beans, lentils, and dark leafy greens 3× a week. Iron prevents anaemia which is common in pregnancy.</div><div class="ttag">Daily</div></div>
+            <div class="tcont"><div class="ttitle" id="tip1t">Iron-rich foods</div><div class="tbody" id="tip1b">Eat beans, lentils, and dark leafy greens 3× a week. Iron prevents anaemia which is common in pregnancy.</div><div class="ttag" id="tip1tag">Daily</div></div>
           </div>
           <div class="tcard">
             <div class="tstripe" style="background:var(--g400)"></div>
-            <div class="tcont"><div class="ttitle">Folic acid tablet</div><div class="tbody">Take your daily tablet with food to reduce nausea. Do not miss a dose — it protects your baby's development.</div><div class="ttag">Every morning</div></div>
+            <div class="tcont"><div class="ttitle" id="tip2t">Folic acid tablet</div><div class="tbody" id="tip2b">Take your daily tablet with food to reduce nausea. Do not miss a dose — it protects your baby's development.</div><div class="ttag" id="tip2tag">Every morning</div></div>
           </div>
-          <div class="chip green">Self-care</div>
+          <div class="chip green" id="chip-selfcare">Self-care</div>
           <div class="tcard">
             <div class="tstripe" style="background:var(--g600)"></div>
-            <div class="tcont"><div class="ttitle">Sleep position</div><div class="tbody">Sleep on your left side from week 20 onwards. This improves blood flow and reduces pressure on your organs.</div><div class="ttag">Tonight</div></div>
+            <div class="tcont"><div class="ttitle" id="tip3t">Sleep position</div><div class="tbody" id="tip3b">Sleep on your left side from week 20 onwards. This improves blood flow and reduces pressure on your organs.</div><div class="ttag" id="tip3tag">Tonight</div></div>
           </div>
           <div class="tcard">
             <div class="tstripe" style="background:var(--g200)"></div>
-            <div class="tcont"><div class="ttitle">Drinking water</div><div class="tbody">Drink at least 8 cups of clean water daily. Dehydration causes headaches and can trigger early contractions.</div><div class="ttag">All day</div></div>
+            <div class="tcont"><div class="ttitle" id="tip4t">Drinking water</div><div class="tbody" id="tip4b">Drink at least 8 cups of clean water daily. Dehydration causes headaches and can trigger early contractions.</div><div class="ttag" id="tip4tag">All day</div></div>
           </div>
         </div>
         <div class="bnav">
-          <div class="bnav-item" onclick="goTo(1)"><div class="bni"></div><div class="bnl">Chat</div></div>
-          <div class="bnav-item" onclick="goTo(3)"><div class="bni"></div><div class="bnl">Reminders</div></div>
-          <div class="bnav-item on"><div class="bni"></div><div class="bnl">Tips</div></div>
+          <div class="bnav-item" onclick="goTo(1)"><div class="bni"></div><div class="bnl" id="bnav-chat4">Chat</div></div>
+          <div class="bnav-item" onclick="goTo(3)"><div class="bni"></div><div class="bnl" id="bnav-rem4">Reminders</div></div>
+          <div class="bnav-item on"><div class="bni"></div><div class="bnl" id="bnav-tips4">Tips</div></div>
         </div>
       </div>
 
@@ -794,26 +792,26 @@ body {
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sidebar-card">
-      <h3>Prototype flow</h3>
+      <h3 id="sidebar-flow-title">Prototype flow</h3>
       <div class="flow-step current" id="fs0" onclick="goTo(0)">
         <div class="fs-num">1</div>
-        <div class="fs-info"><div class="fs-title">Language selection</div><div class="fs-hint">Select English → Continue</div></div>
+        <div class="fs-info"><div class="fs-title" id="fs0t">Language selection</div><div class="fs-hint" id="fs0h">Select English → Continue</div></div>
       </div>
       <div class="flow-step" id="fs1" onclick="goTo(1)">
         <div class="fs-num">2</div>
-        <div class="fs-info"><div class="fs-title">Chat interface</div><div class="fs-hint">Tap a quick reply to continue</div></div>
+        <div class="fs-info"><div class="fs-title" id="fs1t">Chat interface</div><div class="fs-hint" id="fs1h">Tap a quick reply to continue</div></div>
       </div>
       <div class="flow-step" id="fs2" onclick="goTo(2)">
         <div class="fs-num">3</div>
-        <div class="fs-info"><div class="fs-title">Danger alert</div><div class="fs-hint">Tap "I am bleeding heavily"</div></div>
+        <div class="fs-info"><div class="fs-title" id="fs2t">Danger alert</div><div class="fs-hint" id="fs2h">Tap "I am bleeding heavily"</div></div>
       </div>
       <div class="flow-step" id="fs3" onclick="goTo(3)">
         <div class="fs-num">4</div>
-        <div class="fs-info"><div class="fs-title">Reminders + medication</div><div class="fs-hint">Appointments &amp; daily drugs</div></div>
+        <div class="fs-info"><div class="fs-title" id="fs3t">Reminders + medication</div><div class="fs-hint" id="fs3h">Appointments &amp; daily drugs</div></div>
       </div>
       <div class="flow-step" id="fs4" onclick="goTo(4)">
         <div class="fs-num">5</div>
-        <div class="fs-info"><div class="fs-title">Nutrition tips</div><div class="fs-hint">Week 24 trimester advice</div></div>
+        <div class="fs-info"><div class="fs-title" id="fs4t">Nutrition tips</div><div class="fs-hint" id="fs4h">Week 24 trimester advice</div></div>
       </div>
     </div>
 
@@ -888,6 +886,329 @@ function updateUI() {
   });
 }
 
+/* ── TRANSLATIONS ─────────────────────────────────────────── */
+const T = {
+  en: {
+    /* onboarding */
+    appTagline:    'Your maternal health assistant.\nFree. Safe. Always here.',
+    langPrompt:    'Choose your language',
+    ctaBtn:        'Continue in English →',
+    /* chat */
+    chatOnline:    'Online · Week 24',
+    chatWeek:      'T2',
+    chatGreeting:  'Hello Amara! I am Mama-Bot, your maternal health assistant. How can I help you today?',
+    userMsg1:      'I have a headache since yesterday',
+    botReply1:     'A mild headache in pregnancy is common — often from dehydration or tiredness. Drink water and rest. However, if your headache is very severe, or if you have blurred vision or swelling in your face, please go to the clinic immediately.',
+    q1:            'Tiredness?',
+    q2:            'I am bleeding heavily',
+    q3:            'Nutrition tip?',
+    chatInput:     'Ask anything…',
+    tirednessQ:    'Is tiredness normal at 6 months?',
+    nutritionQ:    'What should I eat this week?',
+    tirednessA:    'Yes, fatigue in the 2nd trimester is very normal. Your body is working hard to grow your baby. Try to sleep at least 8 hours and eat iron-rich foods like beans and spinach.',
+    nutritionA:    'This week focus on iron-rich foods: beans, lentils, dark leafy greens, and red meat. Also drink at least 8 cups of water daily. Continue your folic acid tablet every morning.',
+    fallbackA:     'That is a good question. Let me find the right information for you. If you have any urgent symptoms like heavy bleeding or severe pain, please go to the clinic immediately.',
+    /* danger */
+    dangerTitle:   'DANGER ALERT',
+    dangerSub:     'Emergency detected',
+    dangerStrip:   'Seek medical help immediately',
+    dangerUserMsg: 'I am bleeding heavily and feel very dizzy',
+    dangerCardTitle:'This is a medical emergency',
+    dangerBody:    'Heavy bleeding during pregnancy is a serious danger sign. Do not wait or try home remedies. You need a doctor right now.',
+    clinicBtn:     '📞 Call nearest clinic now',
+    adviceTitle:   'While you wait for help:',
+    adviceBody:    'Lie down and stay calm. Ask someone to take you to the clinic immediately. Do not eat or drink anything. Keep warm.',
+    dangerInput:   'Type message…',
+    /* reminders */
+    remTitle:      'Reminders',
+    remSub:        '3 upcoming · 2 daily meds',
+    chipUpcoming:  'Upcoming appointments',
+    chipMeds:      'Daily medication',
+    chipPast:      'Past',
+    visit1Name:    'Antenatal visit',     visit1Loc: 'Tamale District Hospital',    visit1Time: '9:00 AM',
+    visit2Name:    'BP check',            visit2Loc: 'Community health post',       visit2Time: '10:30 AM',
+    visit3Name:    'Growth scan',         visit3Loc: 'Regional hospital',           visit3Time: 'Confirm',
+    drug1Name:     'Folic acid tablet',   drug1Loc:  '1 tablet · Every morning with food',   drug1Time: '8:00 AM',
+    drug2Name:     'Iron supplement',     drug2Loc:  '1 tablet · Every evening after dinner', drug2Time: '7:00 PM',
+    pastName:      'Booking appointment', pastLoc:   'District clinic',
+    navChat:'Chat', navRem:'Reminders', navTips:'Tips',
+    /* tips */
+    tipsTitle:     'Health Tips',
+    tipsSub:       'Week 24 · 2nd trimester',
+    weekLabel:     'Week 24 — 2nd trimester',
+    weekSub:       'Baby is the size of an ear of corn',
+    chipNutrition: 'Nutrition',
+    chipSelfCare:  'Self-care',
+    tip1Title:'Iron-rich foods',       tip1Body:'Eat beans, lentils, and dark leafy greens 3× a week. Iron prevents anaemia which is common in pregnancy.',       tip1Tag:'Daily',
+    tip2Title:'Folic acid tablet',     tip2Body:'Take your daily tablet with food to reduce nausea. Do not miss a dose — it protects your baby\'s development.', tip2Tag:'Every morning',
+    tip3Title:'Sleep position',        tip3Body:'Sleep on your left side from week 20 onwards. This improves blood flow and reduces pressure on your organs.',      tip3Tag:'Tonight',
+    tip4Title:'Drinking water',        tip4Body:'Drink at least 8 cups of clean water daily. Dehydration causes headaches and can trigger early contractions.',    tip4Tag:'All day',
+    /* flow sidebar */
+    fs0title:'Language selection', fs0hint:'Select English → Continue',
+    fs1title:'Chat interface',     fs1hint:'Tap a quick reply to continue',
+    fs2title:'Danger alert',       fs2hint:'Tap "I am bleeding heavily"',
+    fs3title:'Reminders + medication', fs3hint:'Appointments & daily drugs',
+    fs4title:'Nutrition tips',     fs4hint:'Week 24 trimester advice',
+    sidebarFlow:'Prototype flow',
+  },
+
+  fr: {
+    appTagline:    'Votre assistant santé maternelle.\nGratuit. Sûr. Toujours disponible.',
+    langPrompt:    'Choisissez votre langue',
+    ctaBtn:        'Continuer en Français →',
+    chatOnline:    'En ligne · Semaine 24',
+    chatWeek:      'T2',
+    chatGreeting:  'Bonjour Amara ! Je suis Mama-Bot, votre assistant santé maternelle. Comment puis-je vous aider aujourd\'hui ?',
+    userMsg1:      'J\'ai mal à la tête depuis hier',
+    botReply1:     'Un léger mal de tête pendant la grossesse est courant — souvent dû à la déshydratation ou à la fatigue. Buvez de l\'eau et reposez-vous. Cependant, si votre mal de tête est très intense ou si vous avez la vue trouble ou un gonflement du visage, allez immédiatement à la clinique.',
+    q1:            'Fatigue normale ?',
+    q2:            'Je saigne beaucoup',
+    q3:            'Conseil nutrition ?',
+    chatInput:     'Posez une question…',
+    tirednessQ:    'La fatigue est-elle normale à 6 mois ?',
+    nutritionQ:    'Que dois-je manger cette semaine ?',
+    tirednessA:    'Oui, la fatigue au 2e trimestre est très normale. Votre corps travaille dur pour faire grandir votre bébé. Essayez de dormir au moins 8 heures et mangez des aliments riches en fer comme les haricots et les épinards.',
+    nutritionA:    'Cette semaine, concentrez-vous sur les aliments riches en fer : haricots, lentilles, légumes verts foncés et viande rouge. Buvez aussi au moins 8 verres d\'eau par jour. Continuez votre comprimé d\'acide folique chaque matin.',
+    fallbackA:     'C\'est une bonne question. Laissez-moi trouver les bonnes informations pour vous. Si vous avez des symptômes urgents comme des saignements abondants ou des douleurs intenses, allez immédiatement à la clinique.',
+    dangerTitle:   'ALERTE DANGER',
+    dangerSub:     'Urgence détectée',
+    dangerStrip:   'Consultez un médecin immédiatement',
+    dangerUserMsg: 'Je saigne beaucoup et je me sens très étourdie',
+    dangerCardTitle:'C\'est une urgence médicale',
+    dangerBody:    'Les saignements abondants pendant la grossesse sont un signe de danger grave. N\'attendez pas et n\'essayez pas de remèdes maison. Vous avez besoin d\'un médecin maintenant.',
+    clinicBtn:     '📞 Appeler la clinique la plus proche',
+    adviceTitle:   'En attendant les secours :',
+    adviceBody:    'Allongez-vous et restez calme. Demandez à quelqu\'un de vous emmener à la clinique immédiatement. Ne mangez ni ne buvez rien. Gardez-vous au chaud.',
+    dangerInput:   'Taper un message…',
+    remTitle:      'Rappels',
+    remSub:        '3 à venir · 2 médicaments quotidiens',
+    chipUpcoming:  'Rendez-vous à venir',
+    chipMeds:      'Médicaments quotidiens',
+    chipPast:      'Passés',
+    visit1Name:'Visite prénatale',    visit1Loc:'Hôpital de District de Tamale', visit1Time:'9h00',
+    visit2Name:'Contrôle tension',    visit2Loc:'Poste de santé communautaire',  visit2Time:'10h30',
+    visit3Name:'Échographie',         visit3Loc:'Hôpital régional',              visit3Time:'À confirmer',
+    drug1Name:'Comprimé acide folique', drug1Loc:'1 comprimé · Chaque matin avec la nourriture', drug1Time:'8h00',
+    drug2Name:'Supplément en fer',      drug2Loc:'1 comprimé · Chaque soir après le dîner',      drug2Time:'19h00',
+    pastName:'Rendez-vous d\'inscription', pastLoc:'Clinique de district',
+    navChat:'Discussion', navRem:'Rappels', navTips:'Conseils',
+    tipsTitle:     'Conseils Santé',
+    tipsSub:       'Semaine 24 · 2e trimestre',
+    weekLabel:     'Semaine 24 — 2e trimestre',
+    weekSub:       'Votre bébé a la taille d\'un épi de maïs',
+    chipNutrition: 'Nutrition',
+    chipSelfCare:  'Prendre soin de soi',
+    tip1Title:'Aliments riches en fer',     tip1Body:'Mangez des haricots, lentilles et légumes verts foncés 3 fois par semaine. Le fer prévient l\'anémie, courante pendant la grossesse.',          tip1Tag:'Quotidien',
+    tip2Title:'Comprimé d\'acide folique',  tip2Body:'Prenez votre comprimé quotidien avec de la nourriture pour réduire les nausées. Ne manquez pas une dose — il protège le développement de votre bébé.', tip2Tag:'Chaque matin',
+    tip3Title:'Position de sommeil',        tip3Body:'Dormez sur le côté gauche à partir de la semaine 20. Cela améliore la circulation sanguine et réduit la pression sur vos organes.',             tip3Tag:'Ce soir',
+    tip4Title:'Boire de l\'eau',            tip4Body:'Buvez au moins 8 verres d\'eau propre par jour. La déshydratation cause des maux de tête et peut déclencher des contractions précoces.',    tip4Tag:'Toute la journée',
+    fs0title:'Sélection de langue',      fs0hint:'Choisissez Français → Continuer',
+    fs1title:'Interface de discussion',  fs1hint:'Appuyez sur une réponse rapide',
+    fs2title:'Alerte de danger',         fs2hint:'Appuyez sur "Je saigne beaucoup"',
+    fs3title:'Rappels + médicaments',    fs3hint:'Rendez-vous et médicaments',
+    fs4title:'Conseils nutritionnels',   fs4hint:'Conseils pour la semaine 24',
+    sidebarFlow:'Flux du prototype',
+  },
+
+  sw: {
+    appTagline:    'Msaidizi wako wa afya ya uzazi.\nBure. Salama. Hapa kila wakati.',
+    langPrompt:    'Chagua lugha yako',
+    ctaBtn:        'Endelea kwa Kiswahili →',
+    chatOnline:    'Mtandaoni · Wiki 24',
+    chatWeek:      'T2',
+    chatGreeting:  'Habari Amara! Mimi ni Mama-Bot, msaidizi wako wa afya ya uzazi. Ninaweza kukusaidia vipi leo?',
+    userMsg1:      'Nina maumivu ya kichwa tangu jana',
+    botReply1:     'Maumivu ya kichwa kidogo wakati wa ujauzito ni ya kawaida — mara nyingi husababishwa na upungufu wa maji au uchovu. Kunywa maji na upumzike. Hata hivyo, kama maumivu ni makali sana, au kama unaona vibaya au uso wako umevimba, nenda kliniki mara moja.',
+    q1:            'Uchovu ni kawaida?',
+    q2:            'Ninatoka damu nyingi',
+    q3:            'Ushauri wa lishe?',
+    chatInput:     'Uliza swali lolote…',
+    tirednessQ:    'Je, uchovu ni wa kawaida miezi 6?',
+    nutritionQ:    'Nile nini wiki hii?',
+    tirednessA:    'Ndiyo, uchovu katika trimesta ya 2 ni wa kawaida sana. Mwili wako unafanya kazi kwa bidii kukua mtoto wako. Jaribu kulala angalau masaa 8 na kula vyakula vyenye chuma kama maharagwe na mchicha.',
+    nutritionA:    'Wiki hii, zingatia vyakula vyenye chuma: maharagwe, dengu, mboga za majani, na nyama nyekundu. Pia kunywa angalau vikombe 8 vya maji kila siku. Endelea na kidonge chako cha asidi foliki kila asubuhi.',
+    fallbackA:     'Hiyo ni swali zuri. Acha nitafute taarifa sahihi kwako. Kama una dalili za haraka kama kutoka damu nyingi au maumivu makali, nenda kliniki mara moja.',
+    dangerTitle:   'TAHADHARI',
+    dangerSub:     'Dharura imegunduliwa',
+    dangerStrip:   'Tafuta msaada wa daktari mara moja',
+    dangerUserMsg: 'Ninatoka damu nyingi na ninahisi kizunguzungu',
+    dangerCardTitle:'Hii ni dharura ya kimatibabu',
+    dangerBody:    'Kutoka damu nyingi wakati wa ujauzito ni dalili ya hatari. Usisubiri wala kujaribu tiba za nyumbani. Unahitaji daktari sasa hivi.',
+    clinicBtn:     '📞 Piga simu kliniki iliyo karibu',
+    adviceTitle:   'Ukisubiri msaada:',
+    adviceBody:    'Lala chini na utulie. Omba mtu akupeleke kliniki mara moja. Usile wala usinywe chochote. Jikinge na baridi.',
+    dangerInput:   'Andika ujumbe…',
+    remTitle:      'Vikumbusho',
+    remSub:        '3 zinakuja · Dawa 2 za kila siku',
+    chipUpcoming:  'Miadi inayokuja',
+    chipMeds:      'Dawa za kila siku',
+    chipPast:      'Iliyopita',
+    visit1Name:'Ziara ya kabla ya kujifungua', visit1Loc:'Hospitali ya Wilaya ya Tamale', visit1Time:'9:00 AM',
+    visit2Name:'Kupima shinikizo la damu',      visit2Loc:'Kituo cha afya cha jamii',     visit2Time:'10:30 AM',
+    visit3Name:'Ultrasound ya ukuaji',          visit3Loc:'Hospitali ya mkoa',            visit3Time:'Thibitisha',
+    drug1Name:'Kidonge cha asidi foliki',  drug1Loc:'Kidonge 1 · Kila asubuhi na chakula',    drug1Time:'8:00 AM',
+    drug2Name:'Kirutubisho cha chuma',     drug2Loc:'Kidonge 1 · Kila jioni baada ya chakula', drug2Time:'7:00 PM',
+    pastName:'Miadi ya kusajili', pastLoc:'Kliniki ya wilaya',
+    navChat:'Mazungumzo', navRem:'Vikumbusho', navTips:'Vidokezo',
+    tipsTitle:     'Vidokezo vya Afya',
+    tipsSub:       'Wiki 24 · Trimesta ya 2',
+    weekLabel:     'Wiki 24 — Trimesta ya 2',
+    weekSub:       'Mtoto wako ana ukubwa wa gunzi la mahindi',
+    chipNutrition: 'Lishe',
+    chipSelfCare:  'Kujitunza',
+    tip1Title:'Vyakula vyenye chuma',  tip1Body:'Kula maharagwe, dengu na mboga za majani mara 3 kwa wiki. Chuma huzuia upungufu wa damu ambao ni wa kawaida wakati wa ujauzito.',           tip1Tag:'Kila siku',
+    tip2Title:'Kidonge cha asidi foliki', tip2Body:'Chukua kidonge chako kila siku na chakula kupunguza kichefuchefu. Usikose dozi — inalinda ukuaji wa mtoto wako.',                           tip2Tag:'Kila asubuhi',
+    tip3Title:'Nafasi ya kulala',        tip3Body:'Lala upande wa kushoto kuanzia wiki ya 20. Hii inaboresha mtiririko wa damu na kupunguza shinikizo kwenye viungo vyako.',              tip3Tag:'Usiku huu',
+    tip4Title:'Kunywa maji',             tip4Body:'Kunywa angalau vikombe 8 vya maji safi kila siku. Upungufu wa maji husababisha maumivu ya kichwa na unaweza kusababisha mikazo ya mapema.', tip4Tag:'Mchana mzima',
+    fs0title:'Uchaguzi wa lugha',    fs0hint:'Chagua Kiswahili → Endelea',
+    fs1title:'Mazungumzo',           fs1hint:'Bonyeza jibu la haraka',
+    fs2title:'Tahadhari ya hatari',  fs2hint:'Bonyeza "Ninatoka damu nyingi"',
+    fs3title:'Vikumbusho + dawa',    fs3hint:'Miadi na dawa za kila siku',
+    fs4title:'Vidokezo vya lishe',   fs4hint:'Ushauri wa wiki ya 24',
+    sidebarFlow:'Mtiririko wa mfano',
+  },
+
+  ha: {
+    appTagline:    'Mataimakiyarki na lafiyar mahaifa.\nAba. Aminci. Nan kullum.',
+    langPrompt:    'Zaɓi yarenku',
+    ctaBtn:        'Ci gaba da Hausa →',
+    chatOnline:    'A kan layi · Mako 24',
+    chatWeek:      'T2',
+    chatGreeting:  'Sannu Amara! Ni Mama-Bot ne, mataimakiyarki ta lafiyar mahaifa. Yaya zan iya taimakeki yau?',
+    userMsg1:      'Ina ciwon kai tun jiya',
+    botReply1:     'Ciwon kai mai laushi yayin ciki al\'ada ne — yawanci saboda rashin ruwa ko gajiya. Sha ruwa ku huta. Sai dai idan ciwon kai ya yi tsanani sosai, ko kuna ganin abubuwa ba daidai ba ko fuska ta kumbura, je asibiti nan da nan.',
+    q1:            'Gajiya al\'ada ce?',
+    q2:            'Ina zubar jini mai yawa',
+    q3:            'Nasiha ta abinci?',
+    chatInput:     'Yi tambaya…',
+    tirednessQ:    'Shin gajiya al\'ada ce cikin wata 6?',
+    nutritionQ:    'Me zan ci wannan mako?',
+    tirednessA:    'Eh, gajiya a cikin trimesta na 2 al\'ada ce sosai. Jikinka yana yin aiki tuƙuru don girma ɗanka. Gwada barci aƙalla awanni 8 da ci abincin da ke da ƙarfe kamar wake da kayan lambu.',
+    nutritionA:    'Wannan mako, mai da hankali kan abinci mai ƙarfe: wake, lentil, kayan lambu masu duhu, da nama ja. Sha aƙalla kofi 8 na ruwa kowace rana. Ci gaba da ɗaukar ƙwayar acid folate kowace safiya.',
+    fallbackA:     'Wannan tambaya ce mai kyau. Bari in nemo bayanai daidai a gare ki. Idan kuna da alamomi masu gaggawa kamar zubar jini mai yawa ko ciwo mai tsanani, je asibiti nan da nan.',
+    dangerTitle:   'GARGADI NA HADARI',
+    dangerSub:     'An gano gaggawa',
+    dangerStrip:   'Nemi taimakon likita nan da nan',
+    dangerUserMsg: 'Ina zubar jini mai yawa kuma ina jin dizziness mai tsanani',
+    dangerCardTitle:'Wannan gaggawa ce ta likita',
+    dangerBody:    'Zubar jini mai yawa yayin ciki alama ce ta hadari mai tsanani. Kada ki jira ko gwada magunguna na gida. Kuna buƙatar likita yanzu haka.',
+    clinicBtn:     '📞 Kira asibiti mafi kusa yanzu',
+    adviceTitle:   'Yayin jiran taimako:',
+    adviceBody:    'Kwanta ƙasa ki natsu. Nemi wani ya kai ki asibiti nan da nan. Kar ki ci ko sha komai. Kasance dumi.',
+    dangerInput:   'Rubuta saƙo…',
+    remTitle:      'Tunatarwa',
+    remSub:        '3 masu zuwa · Magunguna 2 na yau da kullum',
+    chipUpcoming:  'Randevou masu zuwa',
+    chipMeds:      'Magunguna na yau da kullum',
+    chipPast:      'Da suka wuce',
+    visit1Name:'Ziyarar kafin haihuwa', visit1Loc:'Asibitin Tamale District', visit1Time:'9:00 AM',
+    visit2Name:'Duba matsin jini',       visit2Loc:'Cibiyar lafiya ta al\'umma', visit2Time:'10:30 AM',
+    visit3Name:'Duba ci gaban jariri',   visit3Loc:'Asibitin yanki',            visit3Time:'Tabbatar',
+    drug1Name:'Ƙwayar acid folate',    drug1Loc:'Ƙwaya 1 · Kowace safiya tare da abinci',  drug1Time:'8:00 AM',
+    drug2Name:'Kari na ƙarfe',          drug2Loc:'Ƙwaya 1 · Kowace yamma bayan abinci',    drug2Time:'7:00 PM',
+    pastName:'Randevou na yin rijista', pastLoc:'Asibiti na gari',
+    navChat:'Tattaunawa', navRem:'Tunatarwa', navTips:'Nasihu',
+    tipsTitle:     'Nasihu na Lafiya',
+    tipsSub:       'Mako 24 · Trimesta na 2',
+    weekLabel:     'Mako 24 — Trimesta na 2',
+    weekSub:       'Ɗanka ya kai girman kunnuwar masara',
+    chipNutrition: 'Abinci',
+    chipSelfCare:  'Kula da kai',
+    tip1Title:'Abinci mai ƙarfe',      tip1Body:'Ci wake, lentil, da kayan lambu masu duhu sau 3 a mako. Ƙarfe yana hana anemia wanda yafi yawa yayin ciki.',                      tip1Tag:'Kowace rana',
+    tip2Title:'Ƙwayar acid folate',    tip2Body:'Ɗauki ƙwayanki ta yau da kullum tare da abinci don rage jiri. Kar ki ɓata kashi — tana kare haɓakar ɗanka.',                  tip2Tag:'Kowace safiya',
+    tip3Title:'Matsayin barci',         tip3Body:'Yi barci a gefen hagu daga mako na 20. Wannan yana inganta gudanar jini kuma yana rage matsin jiki a sassan jikinki.',         tip3Tag:'Daren yau',
+    tip4Title:'Sha ruwa',               tip4Body:'Sha aƙalla kofi 8 na tsaftataccen ruwa kowace rana. Rashin ruwa yana haifar da ciwon kai kuma na iya haifar da matsalolin haihuwa.',  tip4Tag:'Duk rana',
+    fs0title:'Zaɓin yare',          fs0hint:'Zaɓi Hausa → Ci gaba',
+    fs1title:'Tattaunawa',           fs1hint:'Taɓa amsa mai sauri',
+    fs2title:'Gargadin hadari',      fs2hint:'Taɓa "Ina zubar jini mai yawa"',
+    fs3title:'Tunatarwa + magunguna',fs3hint:'Randevou da magunguna',
+    fs4title:'Nasihu na abinci',     fs4hint:'Nasiha na mako na 24',
+    sidebarFlow:'Gudanar da samfuri',
+  }
+};
+
+let activeLang = 'en';
+
+function applyLang(lang) {
+  activeLang = lang;
+  const t = T[lang];
+
+  /* Onboarding */
+  document.getElementById('ob-tagline').innerHTML = t.appTagline.replace('\n','<br/>');
+  document.getElementById('ob-lang-prompt').textContent = t.langPrompt;
+  document.getElementById('ob-cta').textContent = t.ctaBtn;
+
+  /* Chat */
+  document.getElementById('chat-online').textContent = t.chatOnline;
+  document.getElementById('chat-week-pill').textContent = t.chatWeek;
+  document.getElementById('chat-greeting').textContent = t.chatGreeting;
+  document.getElementById('chat-user-msg1').textContent = t.userMsg1;
+  document.getElementById('chat-bot-reply1').textContent = t.botReply1;
+  document.getElementById('chat-q1').textContent = t.q1;
+  document.getElementById('chat-q2').textContent = t.q2;
+  document.getElementById('chat-q3').textContent = t.q3;
+  document.getElementById('chat-input-placeholder').textContent = t.chatInput;
+  /* reset chat to initial 3 messages */
+  const ca = document.getElementById('chatArea');
+  ca.innerHTML = `
+    <div class="mrow"><div class="mav">M</div><div><div class="bbl bot" id="chat-greeting">${t.chatGreeting}</div><div class="bbl-t">10:20</div></div></div>
+    <div class="mrow u"><div><div class="bbl usr" id="chat-user-msg1">${t.userMsg1}</div><div class="bbl-t">10:21</div></div></div>
+    <div class="mrow"><div class="mav">M</div><div><div class="bbl bot" id="chat-bot-reply1">${t.botReply1}</div><div class="bbl-t">10:21</div></div></div>`;
+
+  /* Danger */
+  document.getElementById('danger-title').textContent = t.dangerTitle;
+  document.getElementById('danger-sub').textContent = t.dangerSub;
+  document.getElementById('danger-strip-txt').textContent = t.dangerStrip;
+  document.getElementById('danger-user-msg').textContent = t.dangerUserMsg;
+  document.getElementById('danger-card-title').textContent = t.dangerCardTitle;
+  document.getElementById('danger-card-body').textContent = t.dangerBody;
+  document.getElementById('clinic-btn-txt').textContent = t.clinicBtn;
+  document.getElementById('advice-title').textContent = t.adviceTitle;
+  document.getElementById('advice-body').textContent = t.adviceBody;
+  document.getElementById('danger-input-ph').textContent = t.dangerInput;
+
+  /* Reminders */
+  document.getElementById('rem-title').textContent = t.remTitle;
+  document.getElementById('rem-sub').textContent = t.remSub;
+  document.getElementById('chip-upcoming').textContent = t.chipUpcoming;
+  document.getElementById('chip-meds').textContent = t.chipMeds;
+  document.getElementById('chip-past').textContent = t.chipPast;
+  document.getElementById('v1n').textContent = t.visit1Name; document.getElementById('v1l').textContent = t.visit1Loc; document.getElementById('v1t').textContent = t.visit1Time;
+  document.getElementById('v2n').textContent = t.visit2Name; document.getElementById('v2l').textContent = t.visit2Loc; document.getElementById('v2t').textContent = t.visit2Time;
+  document.getElementById('v3n').textContent = t.visit3Name; document.getElementById('v3l').textContent = t.visit3Loc; document.getElementById('v3t').textContent = t.visit3Time;
+  document.getElementById('d1n').textContent = t.drug1Name;  document.getElementById('d1l').textContent = t.drug1Loc;   document.getElementById('d1t').textContent = t.drug1Time;
+  document.getElementById('d2n').textContent = t.drug2Name;  document.getElementById('d2l').textContent = t.drug2Loc;   document.getElementById('d2t').textContent = t.drug2Time;
+  document.getElementById('pastn').textContent = t.pastName; document.getElementById('pastl').textContent = t.pastLoc;
+  document.getElementById('bnav-chat').textContent = t.navChat;
+  document.getElementById('bnav-rem').textContent = t.navRem;
+  document.getElementById('bnav-tips3').textContent = t.navTips;
+  document.getElementById('bnav-chat4').textContent = t.navChat;
+  document.getElementById('bnav-rem4').textContent = t.navRem;
+  document.getElementById('bnav-tips4').textContent = t.navTips;
+
+  /* Tips */
+  document.getElementById('tips-title').textContent = t.tipsTitle;
+  document.getElementById('tips-sub').textContent = t.tipsSub;
+  document.getElementById('week-label').textContent = t.weekLabel;
+  document.getElementById('week-sub').textContent = t.weekSub;
+  document.getElementById('chip-nutrition').textContent = t.chipNutrition;
+  document.getElementById('chip-selfcare').textContent = t.chipSelfCare;
+  document.getElementById('tip1t').textContent = t.tip1Title; document.getElementById('tip1b').textContent = t.tip1Body; document.getElementById('tip1tag').textContent = t.tip1Tag;
+  document.getElementById('tip2t').textContent = t.tip2Title; document.getElementById('tip2b').textContent = t.tip2Body; document.getElementById('tip2tag').textContent = t.tip2Tag;
+  document.getElementById('tip3t').textContent = t.tip3Title; document.getElementById('tip3b').textContent = t.tip3Body; document.getElementById('tip3tag').textContent = t.tip3Tag;
+  document.getElementById('tip4t').textContent = t.tip4Title; document.getElementById('tip4b').textContent = t.tip4Body; document.getElementById('tip4tag').textContent = t.tip4Tag;
+
+  /* Sidebar */
+  document.getElementById('sidebar-flow-title').textContent = t.sidebarFlow;
+  document.getElementById('fs0t').textContent = t.fs0title; document.getElementById('fs0h').textContent = t.fs0hint;
+  document.getElementById('fs1t').textContent = t.fs1title; document.getElementById('fs1h').textContent = t.fs1hint;
+  document.getElementById('fs2t').textContent = t.fs2title; document.getElementById('fs2h').textContent = t.fs2hint;
+  document.getElementById('fs3t').textContent = t.fs3title; document.getElementById('fs3h').textContent = t.fs3hint;
+  document.getElementById('fs4t').textContent = t.fs4title; document.getElementById('fs4h').textContent = t.fs4hint;
+}
+
+const langCodeMap = { 'EN':'en', 'FR':'fr', 'SW':'sw', 'HA':'ha' };
+
 function selectLang(item) {
   document.querySelectorAll('#s0 .lang-item').forEach(el => {
     el.classList.remove('sel');
@@ -895,38 +1216,38 @@ function selectLang(item) {
   });
   item.classList.add('sel');
   item.querySelector('.chk').classList.add('on');
+  const code = item.querySelector('.lang-flag').textContent.trim();
+  applyLang(langCodeMap[code] || 'en');
 }
 
 function sendMsg(text) {
+  const t = T[activeLang];
   const area = document.getElementById('chatArea');
   const msgDiv = document.createElement('div');
   msgDiv.className = 'mrow u';
-  msgDiv.innerHTML = '<div><div class="bbl usr">' + text + '</div><div class="bbl-t">now</div></div>';
+  msgDiv.innerHTML = '<div><div class="bbl usr">' + text + '</div><div class="bbl-t">' + (activeLang==='en'?'now':activeLang==='fr'?'maintenant':activeLang==='sw'?'sasa':'yanzu') + '</div></div>';
   area.appendChild(msgDiv);
-
   const typingDiv = document.createElement('div');
   typingDiv.className = 'mrow';
   typingDiv.innerHTML = '<div class="mav">M</div><div class="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>';
   area.appendChild(typingDiv);
   area.scrollTop = area.scrollHeight;
-
   setTimeout(() => {
     typingDiv.remove();
-    const replies = {
-      'Is tiredness normal at 6 months?': 'Yes, fatigue in the 2nd trimester is very normal. Your body is working hard to grow your baby. Try to sleep at least 8 hours and eat iron-rich foods like beans and spinach.',
-      'What should I eat this week?': 'This week focus on iron-rich foods: beans, lentils, dark leafy greens, and red meat. Also drink at least 8 cups of water daily. Continue your folic acid tablet every morning.',
-    };
-    const reply = replies[text] || 'That is a good question. Let me find the right information for you. If you have any urgent symptoms like heavy bleeding or severe pain, please go to the clinic immediately.';
+    const replies = {};
+    replies[t.tirednessQ] = t.tirednessA;
+    replies[t.nutritionQ] = t.nutritionA;
+    const reply = replies[text] || t.fallbackA;
     const replyDiv = document.createElement('div');
     replyDiv.className = 'mrow';
-    replyDiv.innerHTML = '<div class="mav">M</div><div><div class="bbl bot">' + reply + '</div><div class="bbl-t">now</div></div>';
+    replyDiv.innerHTML = '<div class="mav">M</div><div><div class="bbl bot">' + reply + '</div><div class="bbl-t">' + (activeLang==='en'?'now':activeLang==='fr'?'maintenant':activeLang==='sw'?'sasa':'yanzu') + '</div></div>';
     area.appendChild(replyDiv);
     area.scrollTop = area.scrollHeight;
   }, 1200);
 }
 
 function triggerDanger() {
-  sendMsg('I am bleeding heavily and feel very dizzy');
+  sendMsg(T[activeLang].dangerUserMsg);
   setTimeout(() => goTo(2), 1800);
 }
 
@@ -937,8 +1258,8 @@ document.addEventListener('keydown', e => {
   if (['1','2','3','4','5'].includes(e.key)) goTo(parseInt(e.key) - 1);
 });
 
+applyLang('en');
 updateUI();
 </script>
 </body>
 </html>
-      
