@@ -36,7 +36,7 @@ danger sign alerts, appointment reminders, and nutrition tips.
 | Documentation Lead | Final docs, team contributions |
 
 ## Project Links
-- Prototype: [Figma / Live URL here]
+- Prototype: https://tsungiriraimachingura46-blip.github.io/mamabot-group13/
 - Documentation: [Link here]
 
 ## Setup
@@ -52,4 +52,3 @@ python app.py
 ## License
 Built for educational purposes — Women Techsters Bootcamp 5.0
 
-https://tsungiriraimachingura46-blip.github.io/mamabot-group13/
