@@ -1,1 +1,40 @@
-THIS IS THE KNOWLEDGE BASE
+{
+  "danger_signs": [
+    {
+      "symptom": "heavy bleeding",
+      "severity": "EMERGENCY",
+      "action": "Go to the nearest clinic or hospital immediately. Do not wait."
+    },
+    {
+      "symptom": "blurred vision",
+      "severity": "EMERGENCY",
+      "action": "This could be pre-eclampsia. Seek medical help immediately."
+    },
+    {
+      "symptom": "severe headache",
+      "severity": "EMERGENCY",
+      "action": "A severe headache with swelling or vision changes is dangerous. Go to the clinic now."
+    },
+    {
+      "symptom": "reduced fetal movement",
+      "severity": "URGENT",
+      "action": "If you feel fewer than 10 movements in 2 hours, contact your clinic today."
+    },
+    {
+      "symptom": "high fever",
+      "severity": "URGENT",
+      "action": "A fever above 38 degrees during pregnancy needs medical attention."
+    },
+    {
+      "symptom": "severe swelling",
+      "severity": "URGENT",
+      "action": "Sudden swelling of face, hands, or feet can be dangerous. See a doctor today."
+    },
+    {
+      "symptom": "convulsions",
+      "severity": "EMERGENCY",
+      "action": "Call for help immediately and go to the nearest hospital."
+    }
+  ]
+}
+
