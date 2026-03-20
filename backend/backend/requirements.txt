@@ -1,5 +1,4 @@
 flask
 anthropic
-flask-cors
 python-dotenv
-gunicorn
+
