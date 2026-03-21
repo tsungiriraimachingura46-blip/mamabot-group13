@@ -19,6 +19,10 @@ severe headache, reduced fetal movement, high fever or
 convulsions — immediately say this is a DANGER SIGN and 
 tell them to go to the nearest clinic right away."""
 
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
@@ -34,8 +38,10 @@ def chat():
     return jsonify({"reply": response.content[0].text})
 
 @app.route('/')
-def home():
-    return jsonify({"status": "Mama-Bot is running"})
-
+def home_page():
+    return render_template('index.html') 
+@app.route('/test', methods=['GET'])
+def test():
+    return jsonify({"message": "Backend is working fine"})
 if __name__ == '__main__':
     app.run(debug=True)
