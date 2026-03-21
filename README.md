@@ -1,4 +1,4 @@
-# Mama-Bot — Maternal Health AI Assistant
+# MamaBot — Maternal Health AI Assistant
 
 
 An AI-powered multilingual chatbot giving pregnant women and new mothers 
